@@ -4,7 +4,8 @@ A collection of homemade machine learning algorithmns. Algorithms are created wi
 
 All implementations are made to mirror the functionality of the scikit-learn algos.
 
-## k-nearest neighbors
+## k-Nearest Neighbors
 
-## k-means
+## k-Means
 
+## Neural Networks
