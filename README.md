@@ -16,7 +16,7 @@ Tested on a generated dataset of 2-dimensional distributions normalized with sta
 
 ## Neural Networks
 
-Special thanks to [Michael Nielsen](https://michaelnielsen.org/) for writing the exceptional ebook: [Neural Networks and Deep Learning](http://neuralnetworksanddeeplearning.com/). This book provided an great learning experience of neural networks, and was a preliminary inspiration for my transition into a computational career.
+Special thanks to [Michael Nielsen](https://michaelnielsen.org/) for writing the exceptional ebook: [Neural Networks and Deep Learning](http://neuralnetworksanddeeplearning.com/). This book provided a great learning experience of neural networks, and was a preliminary inspiration for my transition into a computational career.
 
 ### Multi-Layer Perceptron Classifier (MLPClassifier)
 Implementation of a MLP Classifier neural network, trains with mini-batch stochastic gradient descent.
