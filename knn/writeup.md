@@ -6,6 +6,8 @@ Because of this, knn presents a great learning opportunity for machine learning 
 
 ## Algorithm
 
+Suppose you have a dataset of scalar attributes $(X_1^1, X_2^1), (X_1^2, X_2^2), ..., (X_1^n, X_2^n)$ and classes corresponding to said attributes $Y^1, Y^2, ..., Y^n$ where $Y \in {1, 2, ..., m}$.
+
 ## Data
 We'll evaluate our algorithm with the UCI Machine Learning Repository iris dataset. However, any classification dataset consisting of scalar inputs will do. We'll unpack the dataset, and standardize the attributes to have no mean and unit variance. This is done because we don't want to pass any judgements on which features are most important for predicting the class (for this analysis!).
 
