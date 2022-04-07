@@ -1,7 +1,7 @@
 # Create your own k-Nearest Neighbors Algorithm in Python
 
 ## Introduction
-There is a famous quote stating: "You are the average of the five people you spend the most time with." While I'm not qualified to motivate you to evaluate your friendships, I can teach you an algorithmic approach to classifying data based on their neighbors.
+A famous quote states: "You are the average of the five people you spend the most time with." While I'm not qualified to motivate you to evaluate your friendships, I can teach you an algorithmic approach to classifying data based on their neighbors.
 The k-nearest neighbors (knn) algorithm is a supervised learning algorithm with an elegant execution and a surprisingly easy implementation.
 Because of this, knn presents a great learning opportunity for machine learning beginners to create a powerful classification or regression algorithm, with a few lines of Python code.
 
