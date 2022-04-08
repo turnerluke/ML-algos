@@ -9,7 +9,16 @@ Knn is a **supervised** machine learning algorithm. A supervised model has both 
 
 Knn can be used for both **clasification** and **regression**. **Classification** models predict a *categorical* target variable and **regression** models predict a *numeric* target.
 
-Suppose you have a dataset of scalar attributes $(X_1^1, X_2^1), (X_1^2, X_2^2), ..., (X_1^n, X_2^n)$ and classes corresponding to said attributes $y^1, y^2, ..., y^n$ where $y \in {1, 2, ..., m}$. Here, n is the total number of data points and m is the total number of classes. Insted of y being a class, it could also be a scalar value, and knn can be used as a regression, but for this tutorial we will focus on classification.
+Suppose you have a dataset of scalar attributes and classes corresponding to those attributes.
+
+![X](link)  
+X = [(X_1^1, X_2^1), (X_1^2, X_2^2), ..., (X_1^n, X_2^n)]
+
+![y](link)
+y = [y^1, y^2, ..., y^n]\\
+y \in {1, 2, ..., m}
+
+Here, n is the total number of data points and m is the total number of classes. Insted of y being a class, it could also be a scalar value, and knn can be used as a regression, but for this tutorial we will focus on classification.
 
 With this two dimensional example we can easily visualize these points in two-dimensional space. Assuming that classes will tend to cluster with points of the same class in this space, we can classify a new point by the most frequently occuring class near it. Thus, at a given point k is specified as the number of neighbors to consider near said point, and from those neighbors the most frequently occuring class is predicted to be the class of the point at hand.
 
