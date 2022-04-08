@@ -1,13 +1,11 @@
 # Create your own k-Nearest Neighbors Algorithm in Python
 
 ## Introduction
-A famous quote states: "You are the average of the five people you spend the most time with." While I'm not qualified to motivate you to evaluate your friendships, I can teach you an algorithmic approach to classifying data based on their neighbors.
-The k-nearest neighbors (knn) algorithm is a supervised learning algorithm with an elegant execution and a surprisingly easy implementation.
-Because of this, knn presents a great learning opportunity for machine learning beginners to create a powerful classification or regression algorithm, with a few lines of Python code.
+A famous quote states: "You are the average of the five people you spend the most time with." Although we won't be modelling the qualities of your friendships (portfolio project anyone?), this tutorial will teach a simple and intuitive algorithmic approach to classifying data based on their neighbors. The k-nearest neighbors (knn) algorithm is a supervised learning algorithm with an elegant execution and a surprisingly easy implementation. Because of this, knn presents a great learning opportunity for machine learning beginners to create a powerful classification or regression algorithm, with a few lines of Python code.
 
 ## Algorithm
 
-Knn is a **supervised** machine learning algorithm. A supervised model has both a **target variable** and **independent variables**. The **target variable** or dependent variable, denoted y, depends on the independent variables and is the value you want to predict. The **independent variables**, denoted x (single valued) or X (multi valued), are known ahead of time and are used to predict y.
+Knn is a **supervised** machine learning algorithm. A supervised model has both a **target variable** and **independent variables**. The **target variable** or dependent variable, denoted y, depends on the independent variables and is the value you seek to predict. The **independent variables**, denoted x (single valued) or X (multi valued), are known ahead of time and are used to predict y.
 
 Knn can be used for both **clasification* and **regression**. **Classification** models predict a *categorical* target variable and **regression** models predict a *numeric* target.
 
@@ -15,32 +13,23 @@ Suppose you have a dataset of scalar attributes $(X_1^1, X_2^1), (X_1^2, X_2^2),
 
 With this two dimensional example we can easily visualize these points in two-dimensional space. Assuming that classes will tend to cluster with points of the same class in this space, we can classify a new point by the most frequently occuring class near it. Thus, at a given point k is specified as the number of neighbors to consider near said point, and from those neighbors the most frequently occuring class is predicted to be the class of the point at hand.
 
-<p align="center">
-    <img width="200" height="200" scr="https://github.com/turnerluke/ML-algos/blob/main/knn/knn1.png" alt="k=1">
-</p>
-
-
-<h1 align="center">**Figure 1**: *The point is classified as group 1 when k=1.*</h1>
-
-    
-
-
-
-
-
-
-
+![k=1](https://github.com/turnerluke/ML-algos/blob/main/knn/knn1.png)
+**Figure 1:** *The point is classified as group 1 when k=1.*
 
 
 ![k=3](https://github.com/turnerluke/ML-algos/blob/main/knn/knn3.png)
-<center>**Figure 2**: 8The point is classified as group 0 when k=3.*</center>
+**Figure 2:** *The point is classified as group 0 when k=3.*
 
 
 
 ## Data
-We'll evaluate our algorithm with the UCI Machine Learning Repository iris dataset. However, any classification dataset consisting of scalar inputs will do. We'll unpack the dataset, and standardize the attributes to have no mean and unit variance. This is done because we don't want to pass any judgements on which features are most important for predicting the class (for this analysis!).
+We'll evaluate our algorithm with the UCI Machine Learning Repository iris dataset. However, any classification dataset consisting of scalar inputs will do. We'll unpack the dataset, and standardize the attributes to have zero mean and unit variance. This is done because we don't want to pass any judgements on which features are most important for predicting the class (for this analysis!). Lastly, we'll split our dataset into training and testing sets, with the test set consisting of 20% of the original dataset.
 
 ```
+from sklearn import datasets
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
 # Unpack the iris dataset, from UCI Machine Learning Repository
 iris = datasets.load_iris()
 X = iris['data']
@@ -57,10 +46,11 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
 ### Helper Functions
 
-We'll need to figure out the most commonly occuring element in a given group at numerous times in this algorithm. The following function presents an intuitive and quite Pythonic method of finding the most common element in a list.
+We'll need to figure out the most commonly occuring element in a given group at numerous times in this algorithm. The following function presents an intuitive and  Pythonic method of finding the most common element in a list.
 
 ```
 def most_common(lst):
+    '''Returns the most common element in a list'''
     return max(set(lst), key=lst.count)
 ```
 
@@ -69,13 +59,15 @@ Next, we'll need to calculate the distance between a point and every point in a 
 
 ```
 def euclidean(point, data):
-    # Euclidean distance between points a & data
+    '''Euclidean distance between a point  & data'''
     return np.sqrt(np.sum((point - data)**2, axis=1))
 ```
+# Adjust this to new descriptions
 
-Now, lets begin to construct a knn class. For a given knn classifier, we'll specify k and a distance metric. To keep the implementation of this algorithm similar to that of the widely-used scikit-learn suite, we'll initialize the self.X_train and self.y_train in a fit method, however this could be done on initialization.
 
 ### Implementation
+
+Now, lets begin to construct a knn class. For a given knn classifier, we'll specify k and a distance metric. To keep the implementation of this algorithm similar to that of the widely-used scikit-learn suite, we'll initialize the self.X_train and self.y_train in a fit method, however this could be done on initialization.
 
 ```
 class KNeighborsClassifier():
@@ -159,7 +151,7 @@ plt.show()
 ```
 
 ![knn performance](https://github.com/turnerluke/ML-algos/blob/main/knn/knn.png?raw=true)
-
+**Figure 3:** *knn accuracy versus k*
 
 Looks like our knn model performs best at low k.
 
@@ -237,3 +229,8 @@ ax.set(xlabel="k",
 plt.show()
 ```
 Returning to our quote ""You are the average of the five people you spend the most time with", knn classification should instead say "You are the most frequent of the k people you spend the most time with." For an independent challenge adapt this code to better fit the original code by creating a knn regression model, where a point is interpreted as the average scalar target value of its k nearest neighbors.
+
+Thanks for reading!
+[Connect with me on LinkedIn](https://www.linkedin.com/in/turnermluke/)
+[See this project in GitHub](https://github.com/turnerluke/ML-algos/blob/main/knn/KNeighborsClassifier.py)
+[See a knn regression implementation](https://github.com/turnerluke/ML-algos/blob/main/knn/KNeighborsRegressor.py)
