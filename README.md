@@ -4,10 +4,15 @@ A collection of homemade machine learning algorithmns. Algorithms are created wi
 
 All implementations are made to mirror the functionality of the scikit-learn algos.
 
-## k-Nearest Neighbors
-A from-scratch implementation fo the k-nearest neighbors algorithm. Implemented using euclidean distance calculations, but easily generalizes to any other distance metric.
+## k-Nearest Neighbors Classifier
+A from-scratch implementation fo the k-nearest neighbors classifier algorithm. Implemented using euclidean distance calculations, but easily generalizes to any other distance metric.
 
 Tested on the UCI ML Repository iris dataset, performing above 95% accuracy at properly tuned k values. To view the relationship between k and accuracy of this algorithm, please see the attached graph, knn.png.
+
+## k-Nearest Neighbors Regressor
+An adaptation of the knn classification algorithm to handle regressions.
+
+Tested on the StatLib repository Claifornia housing dataset.
 
 ## k-Means Clustering
 A from-scratch implementation of the k-means clustering algorithm. Utilizes the k-means++ algorithm for choosing initial centroid values.
