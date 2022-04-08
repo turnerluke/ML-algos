@@ -7,11 +7,34 @@ Because of this, knn presents a great learning opportunity for machine learning 
 
 ## Algorithm
 
-Suppose you have a dataset of scalar attributes $(X_1^1, X_2^1), (X_1^2, X_2^2), ..., (X_1^n, X_2^n)$ and classes corresponding to said attributes $Y^1, Y^2, ..., Y^n$ where $Y \in {1, 2, ..., m}$. Here, n is the total number of data points and m is the total number of classes.
+Knn is a **supervised** machine learning algorithm. A supervised model has both a **target variable** and **independent variables**. The **target variable** or dependent variable, denoted y, depends on the independent variables and is the value you want to predict. The **independent variables**, denoted x (single valued) or X (multi valued), are known ahead of time and are used to predict y.
 
-With this two dimensional example we can easily visualize these points on two-dimensional space. Assuming that classes will tend to cluster with points of the same class in this space, we can classify a new point by the most frequently occuring class near it. Thus, at a given point k is specified as the number of neighbors to consider near said point, and from those neighbors the most frequently occuring class is predicted to be the class of the point at hand.
+Knn can be used for both **clasification* and **regression**. **Classification** models predict a *categorical* target variable and **regression** models predict a *numeric* target.
 
-# Put some descriptive plots here
+Suppose you have a dataset of scalar attributes $(X_1^1, X_2^1), (X_1^2, X_2^2), ..., (X_1^n, X_2^n)$ and classes corresponding to said attributes $y^1, y^2, ..., y^n$ where $y \in {1, 2, ..., m}$. Here, n is the total number of data points and m is the total number of classes. Insted of y being a class, it could also be a scalar value, and knn can be used as a regression, but for this tutorial we will focus on classification.
+
+With this two dimensional example we can easily visualize these points in two-dimensional space. Assuming that classes will tend to cluster with points of the same class in this space, we can classify a new point by the most frequently occuring class near it. Thus, at a given point k is specified as the number of neighbors to consider near said point, and from those neighbors the most frequently occuring class is predicted to be the class of the point at hand.
+
+<p align="center">
+    <img width="200" height="200" scr="https://github.com/turnerluke/ML-algos/blob/main/knn/knn1.png" alt="k=1">
+</p>
+
+
+<h1 align="center">**Figure 1**: *The point is classified as group 1 when k=1.*</h1>
+
+    
+
+
+
+
+
+
+
+
+
+![k=3](https://github.com/turnerluke/ML-algos/blob/main/knn/knn3.png)
+<center>**Figure 2**: 8The point is classified as group 0 when k=3.*</center>
+
 
 
 ## Data
