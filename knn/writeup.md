@@ -7,18 +7,18 @@ A famous quote states: "You are the average of the five people you spend the mos
 
 Knn is a **supervised** machine learning algorithm. A supervised model has both a **target variable** and **independent variables**. The **target variable** or dependent variable, denoted y, depends on the independent variables and is the value you seek to predict. The **independent variables**, denoted x (single valued) or X (multi valued), are known ahead of time and are used to predict y.
 
-Knn can be used for both **clasification* and **regression**. **Classification** models predict a *categorical* target variable and **regression** models predict a *numeric* target.
+Knn can be used for both **clasification** and **regression**. **Classification** models predict a *categorical* target variable and **regression** models predict a *numeric* target.
 
 Suppose you have a dataset of scalar attributes $(X_1^1, X_2^1), (X_1^2, X_2^2), ..., (X_1^n, X_2^n)$ and classes corresponding to said attributes $y^1, y^2, ..., y^n$ where $y \in {1, 2, ..., m}$. Here, n is the total number of data points and m is the total number of classes. Insted of y being a class, it could also be a scalar value, and knn can be used as a regression, but for this tutorial we will focus on classification.
 
 With this two dimensional example we can easily visualize these points in two-dimensional space. Assuming that classes will tend to cluster with points of the same class in this space, we can classify a new point by the most frequently occuring class near it. Thus, at a given point k is specified as the number of neighbors to consider near said point, and from those neighbors the most frequently occuring class is predicted to be the class of the point at hand.
 
-![k=1](https://github.com/turnerluke/ML-algos/blob/main/knn/knn1.png)
-**Figure 1:** *The point is classified as group 1 when k=1.*
+![k=1](https://github.com/turnerluke/ML-algos/blob/main/knn/knn1.png)  
+**Figure 1:** *This point is classified as group 1 when k=1.*
 
 
-![k=3](https://github.com/turnerluke/ML-algos/blob/main/knn/knn3.png)
-**Figure 2:** *The point is classified as group 0 when k=3.*
+![k=3](https://github.com/turnerluke/ML-algos/blob/main/knn/knn3.png)  
+**Figure 2:** *This point is classified as group 0 when k=3.*
 
 
 
@@ -132,7 +132,7 @@ class KNeighborsClassifier():
         return accuracy
 ```
 
-Believe it or not, we're finished- we can easily deploy this algorithm to model classificaiton problems. But, for completeness we should optimize k for the iris dataset. We can do this by iterating through a range of k and plotting the performance of the model.
+Believe it or not, we're finished - we can easily deploy this algorithm to model classificaiton problems. But, for completeness we should optimize k for the iris dataset. We can do this by iterating through a range of k and plotting the performance of the model.
 ```
 accuracies = []
 ks = range(1, 30)
@@ -150,7 +150,7 @@ ax.set(xlabel="k",
 plt.show()
 ```
 
-![knn performance](https://github.com/turnerluke/ML-algos/blob/main/knn/knn.png?raw=true)
+![knn performance](https://github.com/turnerluke/ML-algos/blob/main/knn/knn.png?raw=true)  
 **Figure 3:** *knn accuracy versus k*
 
 Looks like our knn model performs best at low k.
@@ -230,7 +230,7 @@ plt.show()
 ```
 Returning to our quote ""You are the average of the five people you spend the most time with", knn classification should instead say "You are the most frequent of the k people you spend the most time with." For an independent challenge adapt this code to better fit the original code by creating a knn regression model, where a point is interpreted as the average scalar target value of its k nearest neighbors.
 
-Thanks for reading!
-[Connect with me on LinkedIn](https://www.linkedin.com/in/turnermluke/)
-[See this project in GitHub](https://github.com/turnerluke/ML-algos/blob/main/knn/KNeighborsClassifier.py)
-[See a knn regression implementation](https://github.com/turnerluke/ML-algos/blob/main/knn/KNeighborsRegressor.py)
+Thanks for reading!  
+[Connect with me on LinkedIn](https://www.linkedin.com/in/turnermluke/)  
+[See this project in GitHub](https://github.com/turnerluke/ML-algos/blob/main/knn/KNeighborsClassifier.py)  
+[See a knn regression implementation](https://github.com/turnerluke/ML-algos/blob/main/knn/KNeighborsRegressor.py)  
