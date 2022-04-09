@@ -11,12 +11,11 @@ Knn can be used for both **clasification** and **regression**. **Classification*
 
 Suppose you have a dataset of scalar attributes and classes corresponding to those attributes.
 
-![X](link)  
-X = [(X_1^1, X_2^1), (X_1^2, X_2^2), ..., (X_1^n, X_2^n)]
+![X](https://github.com/turnerluke/ML-algos/blob/main/knn/X.png)  
 
-![y](link)
-y = [y^1, y^2, ..., y^n]\\
-y \in {1, 2, ..., m}
+
+![y](https://github.com/turnerluke/ML-algos/blob/main/knn/y.png)
+
 
 Here, n is the total number of data points and m is the total number of classes. Insted of y being a class, it could also be a scalar value, and knn can be used as a regression, but for this tutorial we will focus on classification.
 
