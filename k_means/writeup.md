@@ -15,7 +15,7 @@ If the points in this dataset belong to distinct groups with attributes signific
 
 This dataset clearly displays 3 distinct classes of data. If we seek to assign a new datapoint to one of these three groups, it can be done by finding the midpoint of each group (centroid) and selecting the nearest centroid as the group of the unassigned datapoint.
 
-![Fig2](https://github.com/turnerluke/ML-algos/blob/main/k_means/classified%20example.png)
+![Fig2](https://github.com/turnerluke/ML-algos/blob/main/k_means/classified%20example.png)  
 **Figure 2:** *The datapoints are segmented into groups denoted with differing colors.*
 
 ## Algorithm
@@ -51,7 +51,7 @@ plt.xlabel("x")
 plt.ylabel("y")
 plt.show()
 ```
-![Fig3](https://github.com/turnerluke/ML-algos/blob/main/k_means/Fig3.png)
+![Fig3](https://github.com/turnerluke/ML-algos/blob/main/k_means/Fig3.png)  
 **Figure 3:** *The dataset we will use to evaluate our k means clustering model.*
 
 This dataset provides a unique demonstration of the k-means algorithm. Observe the orange point uncharactaristically far from its center, and directly in the cluster of purple datapoints.
@@ -206,14 +206,16 @@ plt.plot([x for x, _ in kmeans.centroids],
 plt.show()
 ```
 
-![Fig4](https://github.com/turnerluke/ML-algos/blob/main/k_means/Fig4.png)
+![Fig4](https://github.com/turnerluke/ML-algos/blob/main/k_means/Fig4.png)  
 **Figure 4:** *A failed example where one centroid has no points, and one contains two clusters.*
 
-![Fig5](https://github.com/turnerluke/ML-algos/blob/main/k_means/Fig5.png)
+![Fig5](https://github.com/turnerluke/ML-algos/blob/main/k_means/Fig5.png)  
 **Figure 5:** *A failed example where one centroid has no points, two contains two clusters, and two split one cluster.*
 
-![Fig6](https://github.com/turnerluke/ML-algos/blob/main/k_means/Fig6.png)
+![Fig6](https://github.com/turnerluke/ML-algos/blob/main/k_means/Fig6.png)  
 **Figure 6:** *A failed example where two centroids contain one and a half clusters, and two centroids splkit a cluster.*
+
+### Re-evaluating Centroid Initialization
 
 Looks like our model isn't performing very well. We can infer two primary problems from these three failed examples.
 1. If a centroid is initialized far from any groups, it is unlikely to move. (Example: the bottom right centroid in **Figure 4**.
@@ -245,8 +247,10 @@ for _ in range(self.n_clusters-1):
 
 If we run this new model a few times we'll see it performs much better, but still not always perfect.
 
-![Fig7](https://github.com/turnerluke/ML-algos/blob/main/k_means/Fig7.png)
-**Figure 7:* *An ideal convergence, after implementing the k-means++ initialization method.*
+![Fig7](https://github.com/turnerluke/ML-algos/blob/main/k_means/Fig7.png)  
+**Figure 7:** *An ideal convergence, after implementing the k-means++ initialization method.*
+
+## Conclusion
 
 And with that, we're finished. We learned a simple, yet elegant implementation of an unsupervised machine learning model. The complete project code is included below.
 
