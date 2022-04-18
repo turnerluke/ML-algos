@@ -9,6 +9,8 @@ A from-scratch implementation fo the k-nearest neighbors classifier algorithm. I
 
 Tested on the UCI ML Repository iris dataset, performing above 95% accuracy at properly tuned k values. To view the relationship between k and accuracy of this algorithm, please see the attached graph, knn.png.
 
+![See my medium post about this project here.](https://medium.com/@turnermluke/create-your-own-k-nearest-neighbors-algorithm-in-python-eb7093fc6339)
+
 ## k-Nearest Neighbors Regressor
 An adaptation of the knn classification algorithm to handle regressions.
 
@@ -18,6 +20,8 @@ Tested on the StatLib repository Claifornia housing dataset.
 A from-scratch implementation of the k-means clustering algorithm. Utilizes the k-means++ algorithm for choosing initial centroid values.
 
 Tested on a generated dataset of 2-dimensional distributions normalized with standard scaling. The random seed is set in the script as the results display a data point that will be incorrectly characterized. The data and results are visualized in the scatterplot k-means.png. True labels are separted by color and predicted labels are denoted by shape, thus displaying points that are incorrectly characterized.
+
+![See my medium post about this project here.](https://medium.com/@turnermluke/create-your-own-k-means-clustering-algorithm-in-python-d7d4c9077670)
 
 ## Neural Networks
 
