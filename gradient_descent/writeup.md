@@ -362,3 +362,13 @@ plt.show()
 
 ![Regularization Comparison](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/Fig3.png)  
 **Figure 3:** *Comparison of regularization methods.*
+
+We can qualitatively see that regularizing our parameters has improved our fit (i.e. made it more similar to the actual underlying model.) Try iterating on the parameter weight to see its effect on the final model.
+
+## Conclusion
+
+We learned the fundamentals of gradient descent and implemented an easy algorithm in Python. After doing so, we made minimal changes to add regularization methods to our algorithm and learned about L1 and L2 regularization. I hope you enjoyed.
+
+[See this project on GitHub](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/GradDescent.py)
+[Connect with me on LinkedIn](https://www.linkedin.com/in/turnermluke/)
+[Read some of my other Data Science articles](https://medium.com/@turnermluke)
