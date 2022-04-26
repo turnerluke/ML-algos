@@ -9,7 +9,7 @@ Gradient descent is a fundamental algorithm used for machine learning and optimi
 
 Gradient descent seeks to find a local minimum of the **cost function** by adjusting model parameters. The **cost function** (or loss function) maps variables onto a real number representing a "cost" or value to be minimized.
 
-For our model optimization, we'll perform **least squares optimization**, where we seek to minimize the sum of the differences between our predicted values, and the data values. **Equation 1** presents the cost function 
+For our model optimization, we'll perform **least squares optimization**, where we seek to minimize the sum of the differences between our predicted values, and the data values. **Equation 1** presents the quadratic cost function we'll use.
 
 
 ![Least Squares Cost Function](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/Equ1.png)  
@@ -20,7 +20,7 @@ Here, yhat is the model prediction from the independent variable. For this analy
 ![General Polynomial Model](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/Equ2.png)  
 **Equation 2:** *The general polynomial model used in this analysis.*
 
-For simplicity, we'll keep these equations in matrix form. Doing so presents our new model in **Equation 3** with the X matrix structure presented in **Equation 4**.
+For simplicity, we'll keep these equations in matrix form. Doing so presents our new model in **Equation 3** with the X matrix structure presented in **Equation 4**. Notice that yhat has size (n,), beta has size (m,), and X has size (n, m).
 
 ![Matrix Form](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/Equ3.png)  
 **Equation 3:** *The matrix form of our model.*
