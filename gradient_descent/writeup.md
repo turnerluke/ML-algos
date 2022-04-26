@@ -12,44 +12,44 @@ Gradient descent seeks to find a local minimum of the **cost function** by adjus
 For our model optimization, we'll perform **least squares optimization**, where we seek to minimize the sum of the differences between our predicted values, and the data values. **Equation 1** presents the cost function 
 
 
-![Least Squares Cost Function](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/Equ1.png)
+![Least Squares Cost Function](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/Equ1.png)  
 **Equation 1:** *The least squares optimization cost function.*
 
 Here, yhat is the model prediction from the independent variable. For this analysis we'll use a general polynomial model, presented in **Equation 2**.
 
-![General Polynomial Model](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/Equ2.png)
+![General Polynomial Model](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/Equ2.png)  
 **Equation 2:** *The general polynomial model used in this analysis.*
 
 For simplicity, we'll keep these equations in matrix form. Doing so presents our new model in **Equation 3** with the X matrix structure presented in **Equation 4**.
 
-![Matrix Form](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/Equ3.png)
+![Matrix Form](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/Equ3.png)  
 **Equation 3:** *The matrix form of our model.*
 
-![Polynomial X](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/Equ4.png)
+![Polynomial X](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/Equ4.png)  
 **Equation 4:** *The polynomial matrix, X.*
 
 Now with this background of our cost function and the model we'll be deploying, we can now dive into gradient descent.
 
 The chain rule (recall multivariable calculus) provides us with a method of approximating the change in cost for a given change in parameters. This relationship is presented in **Equation 5**.
 
-![Change in Cost](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/Equ5.png)
+![Change in Cost](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/Equ5.png)  
 **Equation 5:** *The chain rule applied to determine changes in cost for changes in parameters.*
 
 Knowing this, we can define a change in parameters to be proportional to the cost gradient, as presented in **Equation 6**. The learning rate (eta) is chosen to be a small, positive number.
 
-![Parameter Update](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/Equ6.png)
+![Parameter Update](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/Equ6.png)  
 **Equation 6:** *Parameter update rules.*
 
 When this rule to update parameters is plugged into **Equation 5**, we recieve our proof that the chosen parameter updating rule will always descend the cost.
 
-![Cost Descent Proof](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/Equ7.png)
+![Cost Descent Proof](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/Equ7.png)  
 **Equation 7:** *Proof the parameter updating rule will decrease the cost.*
 
 If we recall linear algebra, we can remember that the square of the cost gradient vector will always be positive. Thus, provided the learning rate is small enough, this updating method will *descend the gradient* of the cost function.
 
 Now, to finally implement this algorithm we need a method of numerically calculating the gradient. For this example we could sit with a pen and paper performing derivitives, however we'd like our algorithm to work for any model and cost function. **Equation 8** presents our method of doing so, where we will adjust each parameter by a small value and observe the change in cost.
 
-![Numerical Calculation of Gradient](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/Equ8.png)
+![Numerical Calculation of Gradient](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/Equ8.png)  
 **Equation 8:** *Numerical method of calculating the cost gradient.*
 
 ## Data
@@ -99,7 +99,7 @@ plt.show()
 ```
 
 
-![Data & Actual Model](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/Fig1.png)
+![Data & Actual Model](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/Fig1.png)  
 **Figure 1:** *Our data and actual model.*
 
 ## Model Creation
@@ -222,17 +222,17 @@ ax.legend(['Data', 'Predicted Values', 'Actual Relationship', 'Predicted Model']
 plt.show()
 ```
 
-![Model Fit No Regularization](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/Fig2.png)
+![Model Fit No Regularization](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/Fig2.png)  
 **Figure 2:** *4th order polynomial fit of our data.*
 
 Notice our model is intentionally overfitted. We have a 4th order polynomial fit to 5 data points, recall that an nth order polynomial can always perfectly predict n+1 data points, without any consideration to the underlying model.
 
 Lets slightly modify our cost function to penalize the size of parameters. This process is referred to as **regularization** defined as the process of adding information in order to solve an ill-posed problem to prevent overfitting. We'll perform two types of regularization, **L1** or **Lasso Regression** (Least absolute shrinkage and selection operator) and **L2** or **Ridge Regression**. The modified cost functions for these techniques are presented below in **Equations 9 & 10**.
 
-![L1/Lasso](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/Equ9.png)
+![L1/Lasso](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/Equ9.png)  
 **Equation 9:** *Cost function for L1 Regularization.*
 
-![L2/Ridge](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/Equ10.png)
+![L2/Ridge](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/Equ10.png)  
 **Equation 10:** *Cost function for L2 Regularization.*
 
 
@@ -314,3 +314,47 @@ def cost(beta, **kwargs):
     return C
 ```
 
+Lets do a bit of tuning and see how this effects the bias and variance of our predicted model. This code is shown below, with the plot of comparisons in **Figure 3**.
+
+```
+fig, axs = plt.subplots(1, 3, figsize=(15, 5))
+
+
+for i, (reg, lmda) in enumerate(zip([None, 'L1', 'L2'], [0, 1, 1])):
+    # Initialize a GradDescent object, perform descent and get parameters
+    gd = GradDescent(polynomial_model, cost, beta0, x, y, reg=reg, lmda=lmda)
+    gd.descend()
+
+    beta = gd.beta
+
+    # Make model prediction with parameters
+    yhat = polynomial_model(beta, x)
+
+    axs[i].plot(x, y, '.')
+    axs[i].plot(x, yhat, 'x')
+    xplt = np.linspace(min(x), max(x), 100)
+    yplt = polynomial_model(beta_actual, xplt)
+    axs[i].plot(xplt, yplt, '--')
+    yplt = polynomial_model(beta, xplt)
+    axs[i].plot(xplt, yplt, '--')
+
+    # Set title
+    if reg is not None:
+        axs[i].set_title(reg)
+    else:
+        axs[i].set_title("No Regularization")
+
+    # Clean up the plots - remove x,y ticks and labels
+    axs[i].axes.xaxis.set_ticklabels([])
+    axs[i].axes.yaxis.set_ticklabels([])
+    axs[i].axes.xaxis.set_visible(False)
+    axs[i].axes.yaxis.set_visible(False)
+
+
+fig.legend(['Data', 'Predicted Values', 'Actual Relationship', 'Predicted Model'])
+
+plt.show()
+```
+
+![Regularization Comparison](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/Fig3.png)  
+**Figure 3:** *Comparison of regularization methods.*
