@@ -28,7 +28,11 @@ For simplicity, we'll keep these equations in matrix form. Doing so presents our
 ![Polynomial X](https://github.com/turnerluke/ML-algos/blob/main/gradient_descent/Equ4.png)  
 **Equation 4:** *The polynomial matrix, X.*
 
-Now with this background of our cost function and the model we'll be deploying, we can now dive into gradient descent.
+Now with this background of our cost function and the model we'll be deploying, we can finally dive into the gradient descent algorithm.
+
+## Algorithm
+
+Gradient descent works by calculating the *gradient* of the cost, and adjusting the parameters to *descend* the gradient like a slope.
 
 The chain rule (recall multivariable calculus) provides us with a method of approximating the change in cost for a given change in parameters. This relationship is presented in **Equation 5**.
 
@@ -53,20 +57,20 @@ Now, to finally implement this algorithm we need a method of numerically calcula
 **Equation 8:** *Numerical method of calculating the cost gradient.*
 
 ## Data
-We'll generate our own dataset for this project. We'll simply generate a linearly spaced vector of independent values, and calculate the dependent variables from these, with some noise introduced. I've set my random seed to 42, to allow you to see if you get the same results.
+We'll generate our own dataset for this project. We'll simply generate a linearly spaced vector of independent values, and calculate the dependent variables from these, with some noise introduced. I've set a random seed, to allow you to see if you get the same results.
 
 ```
 import numpy as np
 import matplotlib.pyplot as plt
-np.random.seed(1)
+np.random.seed(1234)
 
 def polynomial_model(beta, x):
     '''
     A polynomial model.
-    beta: numpy array of parameters of size (n,)
-    x: numpy array of size (m,)
+    beta: numpy array of parameters of size (m,)
+    x: numpy array of size (n,)
 
-    return yhat: prediction of the model of size (m,)
+    return yhat: prediction of the model of size (n,)
     '''
     # Turn x (n,) to X (n, m) where m is the order of the polynomial
     # The second axis is the value of x**m
@@ -78,12 +82,12 @@ def polynomial_model(beta, x):
     return yhat
 
 # Construct a dataset
-x = np.linspace(-2, 2, 5)
-beta_actual = [3, 2, 1/3]
-y = polynomial_model(beta_actual, x) + np.random.normal(size=x.size, scale=0.5)
+x = np.arange(-2, 3)
+beta_actual = [1, 2, 1]
+y = polynomial_model(beta_actual, x) + np.random.normal(size=x.size, scale=1)
 ```
 
-I've chosen the actual model parameters to be [3, 2, 1/3], and the noise to be a normal distribution with standard deviation of 0.5. Lets view the data below.
+I've chosen the actual model parameters to be [1, 2, 3], and the noise to be a normal distribution with standard deviation of 1. Lets view the data below.
 
 ```
 # Plot results
@@ -196,7 +200,7 @@ Now we're ready to implement our model. Lets initialize starting parameters, cre
 
 ```
 # Initialize parameters, use a polynomial of order 5
-beta0 = np.random.normal(size=(5,), scale=0.1)
+beta0 = np.random.normal(size=(5,), scale=1)
 
 # Initialize a GradDescent object, perform descent and get parameters
 gd = GradDescent(polynomial_model, cost, beta0, x, y)
