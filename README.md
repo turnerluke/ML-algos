@@ -34,3 +34,7 @@ Tested on the MNIST digit dataset. Results in approximately 90% accuracy (may va
 
 ### Multi-Layer Perceptron Regressor (MLPRegressor)
 Implementation of a MLP Regressor neural network, trains with mini-batch stochastic gradient descent.
+
+## Gradient Descent
+
+An implementation of a gradient descent algorithm to least-squares optimize a quadratic cost function. Accepts L1 and L2 regularization.
