@@ -38,3 +38,5 @@ Implementation of a MLP Regressor neural network, trains with mini-batch stochas
 ## Gradient Descent
 
 An implementation of a gradient descent algorithm to least-squares optimize a quadratic cost function. Accepts L1 and L2 regularization.
+
+[See my Medium post about this project here.](https://towardsdatascience.com/create-a-gradient-descent-algorithm-with-regularization-from-scratch-in-python-571cb1b46642)
